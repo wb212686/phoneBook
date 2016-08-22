@@ -17,15 +17,15 @@ public class PhoneBook {
         phonesMap.put("Лазарев А.А." ,  new ArrayList<String>(Arrays.asList("+8 8010 2000 500", "+8 800 2100 600")));
     }
 
-    public static String getPhonesByName(String name) throws IOException {
+    public static StringBuilder getPhonesByName(String name) throws IOException {
         List<String> phonesList = phonesMap.get(name);
-        String result = "";
+        StringBuilder result = new StringBuilder();
         if (phonesList != null) {
             for (int i = 0; i < phonesList.size(); i++) {
-                result += i + 1 + "." + phonesList.get(i) + "\n";
+                result = result.append(i + 1).append(".").append(phonesList.get(i)).append("\n");
             }
         } else {
-            result = "такого ФИО в БД нет";
+            result = new StringBuilder("такого ФИО в БД нет");
         }
         return result;
     }
